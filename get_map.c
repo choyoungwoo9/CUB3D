@@ -1,4 +1,4 @@
-#include "clone.h"
+#include "cub3d.h"
 
 //파싱시 지켜야 할 것들
 //.cub형식

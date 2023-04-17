@@ -1,4 +1,4 @@
-#include "clone.h"
+#include "cub3d.h"
 
 int key_press(int key, t_info *info)
 {
@@ -55,6 +55,8 @@ int key_press(int key, t_info *info)
 
 int redcross(int key_code, void *data)
 {
+	(void)key_code;
+	
 	data = NULL;
 	exit(0);
 }
