@@ -4,30 +4,30 @@ int key_press(int key, t_info *info)
 {
 	if(key == K_W)
 	{
-		if(worldMap[(int)(info->posX + info->dirX * info->moveSpeed)][(int)(info->posY)] != '1')
+		if(info->map.map[(int)(info->posX + info->dirX * info->moveSpeed)][(int)(info->posY)] != '1')
 			info->posX += info->dirX * info->moveSpeed;
-		if(worldMap[(int)(info->posX)][(int)(info->posY + info->dirY * info->moveSpeed)] != '1')
+		if(info->map.map[(int)(info->posX)][(int)(info->posY + info->dirY * info->moveSpeed)] != '1')
 			info->posY += info->dirY * info->moveSpeed;
 	}
 	if(key == K_S)
 	{
-		if(worldMap[(int)(info->posX - info->dirX * info->moveSpeed)][(int)(info->posY)] != '1')
+		if(info->map.map[(int)(info->posX - info->dirX * info->moveSpeed)][(int)(info->posY)] != '1')
 			info->posX -= info->dirX * info->moveSpeed;
-		if(worldMap[(int)(info->posX)][(int)(info->posY - info->dirY * info->moveSpeed)])
+		if(info->map.map[(int)(info->posX)][(int)(info->posY - info->dirY * info->moveSpeed)])
 			info->posY -= info->dirY * info->moveSpeed;
 	}
 	if(key == K_A)
 	{
-		if(worldMap[(int)(info->posX - info->planeX * info->moveSpeed)][(int)(info->posY)] != '1')
+		if(info->map.map[(int)(info->posX - info->planeX * info->moveSpeed)][(int)(info->posY)] != '1')
 			info->posX -= info->planeX * info->moveSpeed;
-		if(worldMap[(int)(info->posX)][(int)(info->posY - info->planeY * info->moveSpeed)] != '1')
+		if(info->map.map[(int)(info->posX)][(int)(info->posY - info->planeY * info->moveSpeed)] != '1')
 			info->posY -= info->planeY * info->moveSpeed;
 	}
 	if(key == K_D)
 	{
-		if(worldMap[(int)(info->posX + info->planeX * info->moveSpeed)][(int)(info->posY)] != '1')
+		if(info->map.map[(int)(info->posX + info->planeX * info->moveSpeed)][(int)(info->posY)] != '1')
 			info->posX += info->planeX * info->moveSpeed;
-		if(worldMap[(int)(info->posX)][(int)(info->posY + info->planeY * info->moveSpeed)] != '1')
+		if(info->map.map[(int)(info->posX)][(int)(info->posY + info->planeY * info->moveSpeed)] != '1')
 			info->posY += info->planeY * info->moveSpeed;
 	}
 	if(key == K_AR_R)

@@ -9,16 +9,16 @@ static void draw_texture(t_info *info, t_camera *cam, int x)
 	else
 		cam->wallX = info->posX + cam->perWallDist * cam->rayDirX;
 	cam->wallX -= floor(cam->wallX);
-	cam->texX = (int)(cam->wallX * (double)texWidth);
+	cam->texX = (int)(cam->wallX * (double)TEXWIDTH);
 	if (cam->side == 0 && cam->rayDirX > 0)
-		cam->texX = texWidth - cam->texX - 1;
+		cam->texX = TEXWIDTH - cam->texX - 1;
 	if (cam->side == 1 && cam->rayDirY < 0)
-		cam->texX = texWidth - cam->texX - 1;
-	cam->step = 1.0 * texHeight / cam->lineHeight;
-	cam->texPos = (cam->wallStart - height / 2 + cam->lineHeight / 2) * cam->step;
+		cam->texX = TEXWIDTH - cam->texX - 1;
+	cam->step = 1.0 * TEXHEIGHT / cam->lineHeight;
+	cam->texPos = (cam->wallStart - HEIGHT / 2 + cam->lineHeight / 2) * cam->step;
 	while (cam->wallStart < cam->wallEnd)
 	{
-		cam->texY = (int)cam->texPos & (texHeight - 1);
+		cam->texY = (int)cam->texPos & (TEXHEIGHT - 1);
 		cam->texPos += cam->step;
 		color = info->texture[cam->texNum][cam->texY][cam->texX];
 		info->buf[cam->wallStart][x] = color;
@@ -47,13 +47,13 @@ static void	sel_texture(t_camera *cam)
 
 static void	set_wallpos(t_camera *cam)
 {
-	cam->lineHeight = (int)(height / cam->perWallDist);
-	cam->wallStart = -cam->lineHeight / 2 + height / 2;
+	cam->lineHeight = (int)(HEIGHT / cam->perWallDist);
+	cam->wallStart = -cam->lineHeight / 2 + HEIGHT / 2;
 	if (cam->wallStart < 0)
 		cam->wallStart = 0;
-	cam->wallEnd = cam->lineHeight / 2 + height / 2;
-	if (cam->wallEnd >= height)
-		cam->wallEnd = height - 1;
+	cam->wallEnd = cam->lineHeight / 2 + HEIGHT / 2;
+	if (cam->wallEnd >= HEIGHT)
+		cam->wallEnd = HEIGHT - 1;
 }
 
 void	draw_camera(t_info *info, t_camera *cam, int x)

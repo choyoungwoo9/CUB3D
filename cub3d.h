@@ -1,27 +1,24 @@
-#ifndef CUB3D_H
-#define CUB3D_H
+# ifndef CUB3D_H
+# define CUB3D_H
 
-#include <mlx.h>
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "key_macos.h"
-#include <unistd.h>
-#include <fcntl.h>
-#include "libft/libft.h"
+# include <mlx.h>
+# include <math.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include "key_macos.h"
+# include <unistd.h>
+# include <fcntl.h>
+# include "libft/libft.h"
 
-#define X_EVENT_KEY_PRESS 2
-#define X_EVENT_KEY_EXIT 17
-#define texWidth 64
-#define texHeight 64
-#define mapWidth 24
-#define mapHeight 24
-#define width 640
-#define height 480
-
-char	*worldMap[22];
-
+# define X_EVENT_KEY_PRESS 2
+# define X_EVENT_KEY_EXIT 17
+# define TEXWIDTH 64
+# define TEXHEIGHT 64
+# define MAPWIDTH 24
+# define MAPHEIGHT 24
+# define WIDTH 640
+# define HEIGHT 480
 
 typedef struct s_camera
 {
@@ -91,18 +88,18 @@ typedef struct s_info
 	void *mlx;
 	void *win;
 	t_img img;
-	int buf[height][width];
+	int buf[HEIGHT][WIDTH];
 	int texture[4][64][64];
 	double moveSpeed;
 	double rotSpeed;
 }	t_info;
 
-int main_loop(t_info *info);
-int key_press(int key, t_info *info);
-int redcross(int key_code, void *data);
+int		main_loop(t_info *info);
+int		key_press(int key, t_info *info);
+int		redcross(int key_code, void *data);
 void	set_camera(t_info *info, t_camera *cam, int x);
 void	draw_camera(t_info *info, t_camera *cam, int x);
-void load_texture(t_info *info);
-void get_map(char *map_path);
+void	load_texture(t_info *info);
+void	get_map(char *map_path, t_info *info);
 
 #endif

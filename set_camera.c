@@ -48,7 +48,7 @@ static void	set_direction(t_info *info, t_camera *cam)
 
 void	set_camera(t_info *info, t_camera *cam, int x)
 {
-	cam->cameraX = 2 * x / (double)width - 1;
+	cam->cameraX = 2 * x / (double)WIDTH - 1;
 	cam->rayDirX = info->dirX + info->planeX * cam->cameraX;
 	cam->rayDirY = info->dirY + info->planeY * cam->cameraX;
 	cam->mapX = (int)info->posX;

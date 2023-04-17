@@ -2,10 +2,10 @@
 
 static void draw(t_info *info)
 {
-	for(int y = 0; y < height; y ++)
+	for(int y = 0; y < HEIGHT; y ++)
 	{
-		for(int x = 0; x < width; x ++)
-			info->img.data[y * width + x] = info->buf[y][x];
+		for(int x = 0; x < WIDTH; x ++)
+			info->img.data[y * WIDTH + x] = info->buf[y][x];
 	}
 	mlx_put_image_to_window(info->mlx, info->win, info->img.img, 0, 0);
 }
@@ -38,7 +38,7 @@ static void cal_raycasting(t_info *info)
 
 	x = 0;
 	floor_ceiling(info);
-	while (x < width)
+	while (x < WIDTH)
 	{
 		set_camera(info, &cam, x);
 		draw_camera(info, &cam, x);

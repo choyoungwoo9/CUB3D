@@ -16,7 +16,7 @@
 //맵 나오는 부분 이전까지 찾아서 나눔
 //시작이 1 이나 스페이스인 부분 -> 맵
 
-void get_map(char *map_path)
+void get_map(char *map_path, t_info *info)
 {
 	int fd = open(map_path, O_RDONLY);
 	
@@ -34,7 +34,7 @@ void get_map(char *map_path)
 	{
 		char *str = get_next_line(fd);
 		printf("%d : %s\n", i, str);
-		worldMap[i++] = str;
+		info->map.map[i++] = str;
 		if(str == NULL)
 			break;
 	}
