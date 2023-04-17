@@ -13,7 +13,7 @@ int key_press(int key, t_info *info)
 	{
 		if(info->map.map[(int)(info->posX - info->dirX * info->moveSpeed)][(int)(info->posY)] != '1')
 			info->posX -= info->dirX * info->moveSpeed;
-		if(info->map.map[(int)(info->posX)][(int)(info->posY - info->dirY * info->moveSpeed)])
+		if(info->map.map[(int)(info->posX)][(int)(info->posY - info->dirY * info->moveSpeed)] != '1')
 			info->posY -= info->dirY * info->moveSpeed;
 	}
 	if(key == K_A)
