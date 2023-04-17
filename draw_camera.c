@@ -1,59 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_camera.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sehjung <sehjung@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 19:55:30 by sehjung           #+#    #+#             */
+/*   Updated: 2023/04/17 19:56:47 by sehjung          ###   ########seoul.kr  */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-static void draw_texture(t_info *info, t_camera *cam, int x)
+static void	draw_texture(t_info *info, t_camera *cam, int x)
 {
 	int	color;
 
 	if (cam->side == 0)
-		cam->wallX = info->posY + cam->perWallDist * cam->rayDirY;
+		cam->wall_x = info->pos_y + cam->perwalldist * cam->raydir_y;
 	else
-		cam->wallX = info->posX + cam->perWallDist * cam->rayDirX;
-	cam->wallX -= floor(cam->wallX);
-	cam->texX = (int)(cam->wallX * (double)TEXWIDTH);
-	if (cam->side == 0 && cam->rayDirX > 0)
-		cam->texX = TEXWIDTH - cam->texX - 1;
-	if (cam->side == 1 && cam->rayDirY < 0)
-		cam->texX = TEXWIDTH - cam->texX - 1;
-	cam->step = 1.0 * TEXHEIGHT / cam->lineHeight;
-	cam->texPos = (cam->wallStart - HEIGHT / 2 + cam->lineHeight / 2) * cam->step;
-	while (cam->wallStart < cam->wallEnd)
+		cam->wall_x = info->pos_x + cam->perwalldist * cam->raydir_x;
+	cam->wall_x -= floor(cam->wall_x);
+	cam->tex_x = (int)(cam->wall_x * (double)TEXWIDTH);
+	if (cam->side == 0 && cam->raydir_x > 0)
+		cam->tex_x = TEXWIDTH - cam->tex_x - 1;
+	if (cam->side == 1 && cam->raydir_y < 0)
+		cam->tex_x = TEXWIDTH - cam->tex_x - 1;
+	cam->step = 1.0 * TEXHEIGHT / cam->lineheight;
+	cam->tex_pos = (cam->wallstart - HEIGHT
+			/ 2 + cam->lineheight / 2) * cam->step;
+	while (cam->wallstart < cam->wallend)
 	{
-		cam->texY = (int)cam->texPos & (TEXHEIGHT - 1);
-		cam->texPos += cam->step;
-		color = info->texture[cam->texNum][cam->texY][cam->texX];
-		info->buf[cam->wallStart][x] = color;
-		cam->wallStart++;
+		cam->tex_y = (int)cam->tex_pos & (TEXHEIGHT - 1);
+		cam->tex_pos += cam->step;
+		color = info->texture[cam->texnum][cam->tex_y][cam->tex_x];
+		info->buf[cam->wallstart][x] = color;
+		cam->wallstart++;
 	}
 }
 
 static void	sel_texture(t_camera *cam)
 {
-	cam->texNum = 0;
+	cam->texnum = 0;
 	if (cam->side == 0)
 	{
-		if (cam->rayDirX < 0)
-			cam->texNum = 2;
+		if (cam->raydir_x < 0)
+			cam->texnum = 2;
 		else
-			cam->texNum = 3;
+			cam->texnum = 3;
 	}
 	else
 	{
-		if (cam->rayDirY < 0)
-			cam->texNum = 0;
+		if (cam->raydir_y < 0)
+			cam->texnum = 0;
 		else
-			cam->texNum = 1;
+			cam->texnum = 1;
 	}
 }
 
 static void	set_wallpos(t_camera *cam)
 {
-	cam->lineHeight = (int)(HEIGHT / cam->perWallDist);
-	cam->wallStart = -cam->lineHeight / 2 + HEIGHT / 2;
-	if (cam->wallStart < 0)
-		cam->wallStart = 0;
-	cam->wallEnd = cam->lineHeight / 2 + HEIGHT / 2;
-	if (cam->wallEnd >= HEIGHT)
-		cam->wallEnd = HEIGHT - 1;
+	cam->lineheight = (int)(HEIGHT / cam->perwalldist);
+	cam->wallstart = -cam->lineheight / 2 + HEIGHT / 2;
+	if (cam->wallstart < 0)
+		cam->wallstart = 0;
+	cam->wallend = cam->lineheight / 2 + HEIGHT / 2;
+	if (cam->wallend >= HEIGHT)
+		cam->wallend = HEIGHT - 1;
 }
 
 void	draw_camera(t_info *info, t_camera *cam, int x)

@@ -15,6 +15,7 @@ SRCS = 	draw_camera.c \
 		main.c \
 		raycasting.c \
 		set_camera.c \
+		init_info.c \
 
 OBJS = $(SRCS:.c=.o)
 

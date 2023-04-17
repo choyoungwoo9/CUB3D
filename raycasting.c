@@ -1,11 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sehjung <sehjung@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 20:03:47 by sehjung           #+#    #+#             */
+/*   Updated: 2023/04/17 20:24:32 by sehjung          ###   ########seoul.kr  */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-static void draw(t_info *info)
+static void	draw(t_info *info)
 {
-	for(int y = 0; y < HEIGHT; y ++)
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < HEIGHT)
 	{
-		for(int x = 0; x < WIDTH; x ++)
+		x = 0;
+		while (x < WIDTH)
+		{
 			info->img.data[y * WIDTH + x] = info->buf[y][x];
+			x++;
+		}
+		y++;
 	}
 	mlx_put_image_to_window(info->mlx, info->win, info->img.img, 0, 0);
 }
@@ -21,7 +42,7 @@ static void	floor_ceiling(t_info *info)
 		j = 0;
 		while (j < 640)
 		{
-			if(i < 240)
+			if (i < 240)
 			{
 				info->buf[i][j] = info->element.ceil_color[0] << 16;
 				info->buf[i][j] += info->element.ceil_color[1] << 8;
@@ -39,10 +60,10 @@ static void	floor_ceiling(t_info *info)
 	}
 }
 
-static void cal_raycasting(t_info *info)
+static void	cal_raycasting(t_info *info)
 {
-	t_camera	cam;
 	int			x;
+	t_camera	cam;
 
 	x = 0;
 	floor_ceiling(info);
@@ -54,9 +75,9 @@ static void cal_raycasting(t_info *info)
 	}
 }
 
-int main_loop(t_info *info)
+int	main_loop(t_info *info)
 {
 	cal_raycasting(info);
 	draw(info);
-	return 0;
+	return (0);
 }

@@ -1,65 +1,78 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_camera.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sehjung <sehjung@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 21:05:40 by sehjung           #+#    #+#             */
+/*   Updated: 2023/04/17 21:07:36 by sehjung          ###   ########seoul.kr  */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static void	find_wall(t_info *info, t_camera *cam)
 {
-	(void)info;
 	while (cam->hit == 0)// 처음 만나는 벽을 찾을때까지 계속 이동하면서 찾음
 	{
-		if (cam->sideDistX < cam->sideDistY)
+		if (cam->sidedist_x < cam->sidedist_y)
 		{
-			cam->sideDistX += cam->deltaDistX;
-			cam->mapX += cam->stepX;
+			cam->sidedist_x += cam->deltadist_x;
+			cam->map_x += cam->step_x;
 			cam->side = 0;
 		}
 		else
 		{
-			cam->sideDistY += cam->deltaDistY;
-			cam->mapY += cam->stepY;
+			cam->sidedist_y += cam->deltadist_y;
+			cam->map_y += cam->step_y;
 			cam->side = 1;
 		}
-		if (info->map.map[cam->mapX][cam->mapY] == '1')
+		if (info->map.map[cam->map_x][cam->map_y] == '1')
 			cam->hit = 1;
 	}
 }
 
 static void	set_direction(t_info *info, t_camera *cam)
 {
-	if (cam->rayDirX < 0)
+	if (cam->raydir_x < 0)
 	{
-		cam->stepX = -1;
-		cam->sideDistX = (info->posX - cam->mapX) * cam->deltaDistX;
+		cam->step_x = -1;
+		cam->sidedist_x = (info->pos_x - cam->map_x) * cam->deltadist_x;
 	}
 	else
 	{
-		cam->stepX = 1;
-		cam->sideDistX = (cam->mapX + 1.0 - info->posX) * cam->deltaDistX;
+		cam->step_x = 1;
+		cam->sidedist_x = (cam->map_x + 1.0 - info->pos_x) * cam->deltadist_x;
 	}
-	if (cam->rayDirY < 0)
+	if (cam->raydir_y < 0)
 	{
-		cam->stepY = -1;
-		cam->sideDistY = (info->posY - cam->mapY) * cam->deltaDistY;
+		cam->step_y = -1;
+		cam->sidedist_y = (info->pos_y - cam->map_y) * cam->deltadist_y;
 	}
 	else
 	{
-		cam->stepY = 1;
-		cam->sideDistY = (cam->mapY + 1.0 - info->posY) * cam->deltaDistY;
+		cam->step_y = 1;
+		cam->sidedist_y = (cam->map_y + 1.0 - info->pos_y) * cam->deltadist_y;
 	}
 }
 
 void	set_camera(t_info *info, t_camera *cam, int x)
 {
-	cam->cameraX = 2 * x / (double)WIDTH - 1;
-	cam->rayDirX = info->dirX + info->planeX * cam->cameraX;
-	cam->rayDirY = info->dirY + info->planeY * cam->cameraX;
-	cam->mapX = (int)info->posX;
-	cam->mapY = (int)info->posY;
-	cam->deltaDistX = fabs(1 / cam->rayDirX);
-	cam->deltaDistY = fabs(1 / cam->rayDirY);
+	cam->camera_x = 2 * x / (double)WIDTH - 1;
+	cam->raydir_x = info->dir_x + info->plane_x * cam->camera_x;
+	cam->raydir_y = info->dir_y + info->plane_y * cam->camera_x;
+	cam->map_x = (int)info->pos_x;
+	cam->map_y = (int)info->pos_y;
+	cam->deltadist_x = fabs(1 / cam->raydir_x);
+	cam->deltadist_y = fabs(1 / cam->raydir_y);
 	cam->hit = 0;
 	set_direction(info, cam);
 	find_wall(info, cam);
 	if (cam->side == 0)
-		cam->perWallDist = (cam->mapX - info->posX + (1 - cam->stepX) / 2) / cam->rayDirX;
+		cam->perwalldist = (cam->map_x - info->pos_x
+				+ (1 - cam->step_x) / 2) / cam->raydir_x;
 	else
-		cam->perWallDist = (cam->mapY - info->posY + (1 - cam->stepY) / 2) / cam->rayDirY;
+		cam->perwalldist = (cam->map_y - info->pos_y
+				+ (1 - cam->step_y) / 2) / cam->raydir_y;
 }
