@@ -31,8 +31,8 @@ void set_pos(t_info *info)
 		{
 			if(info->map.map[j][i] == 'E' || info->map.map[j][i] == 'W' || info->map.map[j][i] == 'S' || info->map.map[j][i] == 'N')
 			{
-				info->posX = j;
-				info->posY = i; //i와 j헷갈림
+				info->posX = j+0.5;
+				info->posY = i+0.5; //i와 j헷갈림
 			}
 		}
 	}
