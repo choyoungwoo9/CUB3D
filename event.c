@@ -27,6 +27,7 @@ static void	key_ar(int key, t_info *info, double olddir_x, double oldplane_x)
 	}
 	else if (key == K_AR_L)
 	{
+<<<<<<< HEAD
 		info->dir_x = info->dir_x * cos(info->rotspeed)
 			- info->dir_y * sin(info->rotspeed);
 		info->dir_y = olddir_x * sin(info->rotspeed)
@@ -35,6 +36,12 @@ static void	key_ar(int key, t_info *info, double olddir_x, double oldplane_x)
 			- info->plane_y * sin(info->rotspeed);
 		info->plane_y = oldplane_x * sin(info->rotspeed)
 			+ info->plane_y * cos(info->rotspeed);
+=======
+		if(info->map.map[(int)(info->posX - info->dirX * info->moveSpeed)][(int)(info->posY)] != '1')
+			info->posX -= info->dirX * info->moveSpeed;
+		if(info->map.map[(int)(info->posX)][(int)(info->posY - info->dirY * info->moveSpeed)] != '1')
+			info->posY -= info->dirY * info->moveSpeed;
+>>>>>>> c403aa2693c388a2d64b05c449350a5b85df1803
 	}
 }
 
