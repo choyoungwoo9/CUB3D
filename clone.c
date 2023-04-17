@@ -36,9 +36,12 @@ void calc(t_info *info)
 		//이번 반복의 표현할 x값임 화면에서 가장 왼쪽이면 -1 중간이면 0 오른쪽이면 1
 		//x값에서 나와 처음 만나는 물체의 거리를 바탕으로 y값도 결정할수있음
 		double cameraX = 2 * x / (double)width - 1;
+
 		//rayDir은 내 위치에서 지금 찍고자 하는 카메라로의 방향벡터
 		double rayDirX = info->dirX + info->planeX * cameraX;
 		double rayDirY = info->dirY + info->planeY * cameraX;
+
+		//플레이어의 현재 좌표를 정수형 값으로 초기화
 		int mapX = (int)info->posX;
 		int mapY = (int)info->posY;
 
@@ -49,16 +52,21 @@ void calc(t_info *info)
 		//sideDist가 검사할 다음 벽은 deltaDist를 더해서 찾음
 		double deltaDistX = fabs(1 / rayDirX);
 		double deltaDistY = fabs(1 / rayDirY);
+
+		//어안렌즈 현상 보정시 사용되는 변수
 		double perpWallDist;
 
-		//벽이 있는지 검사 할 방향
+		//벽이 있는지 검사 할 방향 (광선의 방향에 따라 이동방향(음or양)을 담음)
 		int stepX;
 		int stepY;
 
+		//벽에 부딪히면 1, 아니면 0 flag
 		int hit = 0;
+
+		//y축에 수직이면 1(-), x축에 수직이면 0(ㅣ) flag
 		int side;
 
-		//sideDist 결정
+		//stepX,Y 결정 / sideDist 정하기 (직각삼각형 닮음비로 증명)
 		if(rayDirX < 0)
 		{
 			stepX = -1;
@@ -79,9 +87,10 @@ void calc(t_info *info)
 			stepY = 1;
 			sideDistY = (mapY + 1.0 - info->posY) * deltaDistY;
 		}
+		//벽에 부딪힐때까지
 		while(hit == 0)
 		{
-			if(sideDistX < sideDistY)
+			if(sideDistX < sideDistY) // DDA 알고리즘으로 직선으로 이동시켜 벽을 찾음
 			{
 				sideDistX += deltaDistX;
 				mapX += stepX;
@@ -98,10 +107,13 @@ void calc(t_info *info)
 				hit = 1;
 			}
 		}
-		if(side == 0)
+
+		if(side == 0) // x축에 수직이면
 			perpWallDist = (mapX - info->posX + (1 - stepX) / 2) / rayDirX;
-		else
+		else // y축에 수직이면
 			perpWallDist = (mapY - info->posY + (1 - stepY) / 2) / rayDirY;
+		
+
 		
 		int lineHeight = (int)(height / perpWallDist);
 		int drawStart = -lineHeight / 2 + height / 2;
@@ -146,8 +158,8 @@ void calc(t_info *info)
 			texPos += step;
 
 			int color = info->texture[texNum][texY][texX];
-			if(side == 1)
-				color = (color >> 1) & 8355711;
+			// if(side == 1)
+			// 	color = (color >> 1) & 8355711;
 			info->buf[y][x] = color;
 		}
 	}
