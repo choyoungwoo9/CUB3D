@@ -1,6 +1,6 @@
 NAME = cub3d
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -fsanitize=address -Wall -Wextra -Werror
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -g
 
 LIBFT = make -C libft

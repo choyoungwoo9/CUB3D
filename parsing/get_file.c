@@ -33,6 +33,7 @@ void set_pos(t_info *info)
 			{
 				info->posX = j+0.5;
 				info->posY = i+0.5; //i와 j헷갈림
+				info->map.start_direction = info->map.map[j][i];
 			}
 		}
 	}

@@ -60,8 +60,7 @@ typedef struct s_element
 typedef struct s_map
 {
 	char **map;
-	int start_x;
-	int start_y;
+	char start_direction;
 }	t_map;
 
 typedef struct s_img
