@@ -17,7 +17,7 @@ static void	find_wall(t_info *info, t_camera *cam)
 			cam->mapY += cam->stepY;
 			cam->side = 1;
 		}
-		if (worldMap[cam->mapX][cam->mapY] == '1')
+		if (info->map.map[cam->mapX][cam->mapY] == '1')
 			cam->hit = 1;
 	}
 }

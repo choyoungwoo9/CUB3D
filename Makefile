@@ -7,7 +7,10 @@ LIBFT = make -C libft
 
 SRCS = 	draw_camera.c \
 		event.c \
-		get_map.c \
+		parsing/get_map.c \
+		parsing/get_util.c \
+		parsing/get_file.c \
+		parsing/get_element.c \
 		load_texture.c \
 		main.c \
 		raycasting.c \

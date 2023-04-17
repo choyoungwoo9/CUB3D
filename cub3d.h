@@ -100,6 +100,8 @@ int		redcross(int key_code, void *data);
 void	set_camera(t_info *info, t_camera *cam, int x);
 void	draw_camera(t_info *info, t_camera *cam, int x);
 void	load_texture(t_info *info);
-void	get_map(char *map_path, t_info *info);
-
+void get_element(int fd, t_info *info);
+void get_map(int fd, t_info *info);
+void get_file(char *map_path, t_info *info);
+void my_error();
 #endif

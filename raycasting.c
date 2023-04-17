@@ -16,15 +16,23 @@ static void	floor_ceiling(t_info *info)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < 480)
 	{
+		j = 0;
 		while (j < 640)
 		{
 			if(i < 240)
-				info->buf[i][j] = (255 << 8);
+			{
+				info->buf[i][j] = info->element.ceil_color[0] << 16;
+				info->buf[i][j] += info->element.ceil_color[1] << 8;
+				info->buf[i][j] += info->element.ceil_color[2] << 0;
+			}
 			else
-				info->buf[i][j] = 255;
+			{
+				info->buf[i][j] = info->element.floor_color[0] << 16;
+				info->buf[i][j] += info->element.floor_color[1] << 8;
+				info->buf[i][j] += info->element.floor_color[1];
+			}
 			j++;
 		}
 		i++;

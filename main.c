@@ -1,13 +1,17 @@
 #include "cub3d.h"
 
-int main()
+//벽에 충돌했을떄 벽 뚫려 보이는 문제
+//처음 시작할때도 마찬가지
+
+int main(int argc, char **argv)
 {
+	if(argc != 2)
+		my_error();
 	t_info info;
-	get_map("map.cub", &info);
+	get_file(argv[1], &info);
 
 	info.mlx = mlx_init();
-	info.posX = 11.0;
-	info.posY = 27.0;
+	//사용자의 방향 N S W E에 따라 아래 값 다르게 해 처음 처다보는 방향 다르게 함
 	info.dirX = -1.0;
 	info.dirY = 0.0;
 	info.planeX = 0.0;
@@ -18,7 +22,7 @@ int main()
 	for(int i = 0; i < HEIGHT; i ++)
 	{
 		for(int j = 0; j < WIDTH; j ++)
-			info.buf[i][j] = 1;
+			info.buf[i][j] = 0;
 	}
 	//texture을 불러와 2차원배열 형태로 저장함
 	load_texture(&info);
