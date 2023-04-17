@@ -3,6 +3,38 @@
 //벽에 충돌했을떄 벽 뚫려 보이는 문제
 //처음 시작할때도 마찬가지
 
+void set_start_direction(char direction, t_info *info)
+{
+	if(direction == 'N')
+	{
+		info->dirX = -1.0;
+		info->dirY = 0.0;
+		info->planeX = 0.0;
+		info->planeY = 0.66;
+	}
+	if(direction == 'S')
+	{
+		info->dirX = 1.0;
+		info->dirY = 0.0;
+		info->planeX = 0.0;
+		info->planeY = -0.66;
+	}
+	if(direction == 'W')
+	{
+		info->dirX = 0.0;
+		info->dirY = 1.0;
+		info->planeX = 0.66;
+		info->planeY = 0.0;
+	}
+	if(direction == 'E')
+	{
+		info->dirX = 0.0;
+		info->dirY = -1.0;
+		info->planeX = -0.66;
+		info->planeY = 0.0;
+	}
+}
+
 int main(int argc, char **argv)
 {
 	if(argc != 2)
@@ -12,10 +44,7 @@ int main(int argc, char **argv)
 
 	info.mlx = mlx_init();
 	//사용자의 방향 N S W E에 따라 아래 값 다르게 해 처음 처다보는 방향 다르게 함
-	info.dirX = -1.0;
-	info.dirY = 0.0;
-	info.planeX = 0.0;
-	info.planeY = 0.66;
+	set_start_direction(info.map.start_direction, &info);
 
 	info.moveSpeed = 0.15;
 	info.rotSpeed = 0.1;
