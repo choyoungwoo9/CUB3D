@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehjung <sehjung@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: youngwch <youngwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:48:19 by sehjung           #+#    #+#             */
-/*   Updated: 2023/04/17 21:29:54 by sehjung          ###   ########seoul.kr  */
+/*   Updated: 2023/04/18 11:03:42 by youngwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,9 @@ void	get_map(int fd, t_info *info);
 void	get_file(char *map_path, t_info *info);
 void	my_error(void);
 void	init_info(char direction, t_info *info);
+void	parse_rgb(char *str, int *color_store);
+void	check_str_count(char **p_str, int count);
+void	get_texture_path(t_element *e, char *str, int *flag);
+void	check_world_map(char **map);
 
 #endif

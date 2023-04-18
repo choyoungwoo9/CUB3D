@@ -11,6 +11,9 @@ SRCS = 	draw_camera.c \
 		parsing/get_util.c \
 		parsing/get_file.c \
 		parsing/get_element.c \
+		parsing/parse_rgb.c \
+		parsing/get_texture_path.c \
+		parsing/check_world_map.c \
 		load_texture.c \
 		main.c \
 		raycasting.c \
