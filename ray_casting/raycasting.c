@@ -6,7 +6,7 @@
 /*   By: youngwch <youngwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 20:03:47 by sehjung           #+#    #+#             */
-/*   Updated: 2023/04/18 12:47:49 by youngwch         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:21:43 by youngwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,15 @@ static void	floor_ceiling(t_info *info)
 		{
 			if (i < 240)
 			{
-				info->buf[i][j] = info->element.ceil_color[0] << 16;
-				info->buf[i][j] += info->element.ceil_color[1] << 8;
-				info->buf[i][j] += info->element.ceil_color[2];
-			}
-			else
-			{
 				info->buf[i][j] = info->element.floor_color[0] << 16;
 				info->buf[i][j] += info->element.floor_color[1] << 8;
 				info->buf[i][j] += info->element.floor_color[2];
+			}
+			else
+			{
+				info->buf[i][j] = info->element.ceil_color[0] << 16;
+				info->buf[i][j] += info->element.ceil_color[1] << 8;
+				info->buf[i][j] += info->element.ceil_color[2];
 			}
 			j++;
 		}

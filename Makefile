@@ -1,7 +1,7 @@
 NAME = cub3D
 
 CFLAGS = -Wall -Wextra -Werror
-MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -g
+MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
 LIBFT = make -C libft
 
