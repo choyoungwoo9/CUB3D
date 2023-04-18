@@ -6,7 +6,7 @@
 /*   By: youngwch <youngwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 09:43:49 by youngwch          #+#    #+#             */
-/*   Updated: 2023/04/18 10:54:41 by youngwch         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:10:26 by youngwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	get_element(int fd, t_info *info)
 		if (!str || str[ft_strlen(str) - 1] != '\n')
 			my_error();
 		if (str[0] == '\n' && ft_strlen(str) == 1)
+		{
+			free(str);
 			continue ;
+		}
 		tmp_str = str;
 		str = ft_substr(str, 0, ft_strlen(str) - 1);
 		free(tmp_str);

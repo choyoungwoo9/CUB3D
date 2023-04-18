@@ -6,16 +6,21 @@
 /*   By: youngwch <youngwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 20:02:39 by sehjung           #+#    #+#             */
-/*   Updated: 2023/04/18 10:52:04 by youngwch         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:33:37 by youngwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void func()
+{
+	system("leaks cub3d");
+}
+
 int	main(int argc, char **argv)
 {
 	t_info	info;
-
+	atexit(func);
 	if (argc != 2)
 		my_error();
 	get_file(argv[1], &info);

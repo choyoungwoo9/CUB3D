@@ -6,11 +6,11 @@
 /*   By: youngwch <youngwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 21:05:40 by sehjung           #+#    #+#             */
-/*   Updated: 2023/04/18 11:12:48 by youngwch         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:30:28 by youngwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 static void	find_wall(t_info *info, t_camera *cam)
 {

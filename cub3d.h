@@ -6,7 +6,7 @@
 /*   By: youngwch <youngwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:48:19 by sehjung           #+#    #+#             */
-/*   Updated: 2023/04/18 11:03:42 by youngwch         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:30:50 by youngwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include "key_macos.h"
 # include <unistd.h>
 # include <fcntl.h>
 # include "libft/libft.h"
@@ -31,6 +30,13 @@
 # define MAPHEIGHT 24
 # define WIDTH 640
 # define HEIGHT 480
+# define K_A 0
+# define K_S 1
+# define K_D 2
+# define K_W 13
+# define K_AR_L 123
+# define K_AR_R 124
+# define K_ESC 53
 
 typedef struct s_camera
 {
