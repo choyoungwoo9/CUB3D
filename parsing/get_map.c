@@ -6,7 +6,7 @@
 /*   By: youngwch <youngwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:00:39 by youngwch          #+#    #+#             */
-/*   Updated: 2023/04/18 11:00:40 by youngwch         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:49:18 by youngwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	get_map(int fd, t_info *info)
 	char	*tmp_str;
 	char	*str;
 
-	all_str = strdup("");
+	all_str = ft_strdup("");
 	while (1)
 	{
 		str = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: youngwch <youngwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:48:19 by sehjung           #+#    #+#             */
-/*   Updated: 2023/04/18 11:30:50 by youngwch         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:46:25 by youngwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include "libft/libft.h"
