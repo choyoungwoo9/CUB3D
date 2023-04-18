@@ -6,7 +6,7 @@
 /*   By: youngwch <youngwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 21:05:40 by sehjung           #+#    #+#             */
-/*   Updated: 2023/04/18 11:30:28 by youngwch         ###   ########.fr       */
+/*   Updated: 2023/04/18 14:54:44 by youngwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	find_wall(t_info *info, t_camera *cam)
 {
-	while (cam->hit == 0)// 처음 만나는 벽을 찾을때까지 계속 이동하면서 찾음
+	while (cam->hit == 0)
 	{
 		if (cam->sidedist_x < cam->sidedist_y)
 		{

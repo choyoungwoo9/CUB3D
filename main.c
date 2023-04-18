@@ -6,7 +6,7 @@
 /*   By: youngwch <youngwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 20:02:39 by sehjung           #+#    #+#             */
-/*   Updated: 2023/04/18 12:47:31 by youngwch         ###   ########.fr       */
+/*   Updated: 2023/04/18 14:55:51 by youngwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_info	info;
+
 	if (argc != 2)
 		my_error();
 	get_file(argv[1], &info);

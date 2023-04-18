@@ -6,7 +6,7 @@
 /*   By: youngwch <youngwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:48:19 by sehjung           #+#    #+#             */
-/*   Updated: 2023/04/18 12:55:10 by youngwch         ###   ########.fr       */
+/*   Updated: 2023/04/18 14:54:21 by youngwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,29 @@
 
 typedef struct s_camera
 {
-	double	camera_x;//평면카메라
-	double	raydir_x;//카메라 방향벡터
+	double	camera_x;
+	double	raydir_x;
 	double	raydir_y;
-	int		map_x;//플레이어 좌표 (부딪힌 벽의 좌표를 저장할 때 사용)
+	int		map_x;
 	int		map_y;
-	double	sidedist_x;//처음 만나는 벽의 거리
+	double	sidedist_x;
 	double	sidedist_y;
-	double	deltadist_x;//다음 만나는 벽의 거리
+	double	deltadist_x;
 	double	deltadist_y;
-	double	perwalldist;//어안렌즈 현상 보정
-	int		step_x;//벽이 있는지 검사 할 방향 (광선의 방향에 따라 이동방향(음or양)을 담음)
+	double	perwalldist;
+	int		step_x;
 	int		step_y;
-	int		hit;//벽에 부딪히면 1, 아니면 0 flag
-	int		side;//y축에 수직이면 1(-), x축에 수직이면 0(ㅣ) flag
-	int		lineheight;//벽의 높이
-	int		wallstart;//벽의 시작점과 끝점
+	int		hit;
+	int		side;
+	int		lineheight;
+	int		wallstart;
 	int		wallend;
-	int		texnum;//텍스쳐
-	double	wall_x;//벽의 X축부터 광선이 부딪힌 곳의 거리
-	int		tex_x;//텍스쳐끝에서 광선까지의 픽셀 거리
+	int		texnum;
+	double	wall_x;
+	int		tex_x;
 	int		tex_y;
-	double	tex_pos;//텍스쳐에서 어떤 색상을 가져올지에 대한 y좌표
-	double	step;//텍스쳐의 원래 크기를 실제 벽의 크기로 나눈 값
+	double	tex_pos;
+	double	step;
 }	t_camera;
 
 typedef struct s_element
