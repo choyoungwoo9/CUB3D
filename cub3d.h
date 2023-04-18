@@ -6,7 +6,7 @@
 /*   By: youngwch <youngwch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:48:19 by sehjung           #+#    #+#             */
-/*   Updated: 2023/04/18 12:46:25 by youngwch         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:55:10 by youngwch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include <fcntl.h>
 # include "libft/libft.h"
 
-# define X_EVENT_KEY_PRESS 2
-# define X_EVENT_KEY_EXIT 17
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
 # define MAPWIDTH 24
@@ -36,6 +34,8 @@
 # define K_AR_L 123
 # define K_AR_R 124
 # define K_ESC 53
+# define X_EVENT_KEY_PRESS 2
+# define X_EVENT_KEY_EXIT 17
 
 typedef struct s_camera
 {

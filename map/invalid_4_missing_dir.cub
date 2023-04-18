@@ -1,6 +1,6 @@
-NO textures/greystone.xpm
-SO textures/purplestone.xpm
-WE textures/redbrick.xpm
+NO textures/ground.xpm
+SO textures/lava.xpm
+WE textures/asset1.xpm
 
 F 220,100,0
 C 255,30,0
